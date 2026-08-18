@@ -11,10 +11,12 @@ set -e
 OPTIONS_FILE=/data/options.json
 
 # $1 = jq-Filter (z. B. '.timezone'), $2 = Default, falls Option fehlt/leer/null.
+# Kein "// empty" hier: jq behandelt JSON false wie null/fehlend (Alternative-
+# Operator), das würde z. B. auto_start_main=false stillschweigend ignorieren.
 _opt() {
     value=""
     if [ -f "$OPTIONS_FILE" ]; then
-        value="$(jq -r "${1} // empty" "$OPTIONS_FILE" 2>/dev/null || true)"
+        value="$(jq -r "${1}" "$OPTIONS_FILE" 2>/dev/null || true)"
     fi
     if [ -z "$value" ] || [ "$value" = "null" ]; then
         printf '%s' "$2"
