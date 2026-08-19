@@ -2,7 +2,9 @@
 
 Custom Add-on-Repository für [Earnie](https://github.com/JochenTCC/Earnie) (Energiemanagement und Optimierung für Smart Homes), primär für **Home Assistant Green** (HA OS, `aarch64`).
 
-Dieses Repository ist nicht Teil der offiziellen Home-Assistant-Community-Add-on-Liste. Entwicklungsquelle und Issue-Tracker sind das Hauptrepo [JochenTCC/Earnie](https://github.com/JochenTCC/Earnie) — dieses Repo wird bei Releases aus `packaging/homeassistant-addon/earnie/` dort synchronisiert (`sync-to-ha-addon-repo.sh`).
+Dieses Repository ist nicht Teil der offiziellen Home-Assistant-Community-Add-on-Liste. Entwicklungsquelle und Issue-Tracker sind das Hauptrepo [JochenTCC/Earnie](https://github.com/JochenTCC/Earnie).
+
+**Auto-publish:** Jeder Earnie-Release-Tag (`vX.Y.Z`, inkl. alpha/rc) triggert in Earnie den Job `publish_ha_addon`, der `packaging/homeassistant-addon/earnie/` hierher spiegelt. Add-on-`version:` entspricht der Earnie-App-Version. Manueller Sync: `sync-to-ha-addon-repo.sh` im Hauptrepo.
 
 ## Installation
 
@@ -18,6 +20,10 @@ Ausführliche Anwenderdokumentation: [docs/einrichtung/homeassistant-addon.md](h
 | Add-on | Beschreibung |
 |---|---|
 | [Earnie](earnie/) | Energiemanagement und Optimierung für Smart Homes — Wrapper um `ghcr.io/jochentcc/earnie-energy` |
+
+## CI
+
+Push/PR auf `main`: [`.github/workflows/hassfest.yml`](.github/workflows/hassfest.yml) (Add-on-Lint via `frenck/action-addon-linter`).
 
 ## Lizenz
 
