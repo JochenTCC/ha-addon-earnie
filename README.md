@@ -15,6 +15,8 @@ Dieses Repository ist nicht Teil der offiziellen Home-Assistant-Community-Add-on
 
 Ausführliche Anwenderdokumentation: [docs/einrichtung/homeassistant-addon.md](https://github.com/JochenTCC/Earnie/blob/main/docs/einrichtung/homeassistant-addon.md) im Hauptrepo.
 
+Offene Add-on-Themen (nicht Earnie-Produktfeatures): [BACKLOG.md](BACKLOG.md).
+
 ## Add-ons in diesem Repository
 
 | Add-on | Beschreibung |
