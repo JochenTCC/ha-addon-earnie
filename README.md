@@ -4,7 +4,7 @@ Custom Add-on-Repository für [Earnie](https://github.com/JochenTCC/Earnie) (Ene
 
 Dieses Repository ist nicht Teil der offiziellen Home-Assistant-Community-Add-on-Liste. Entwicklungsquelle und Issue-Tracker sind das Hauptrepo [JochenTCC/Earnie](https://github.com/JochenTCC/Earnie).
 
-**Auto-publish:** Jeder Earnie-Release-Tag (`vX.Y.Z`, inkl. alpha/rc) triggert in Earnie den Job `publish_ha_addon`, der `packaging/homeassistant-addon/earnie/` hierher spiegelt. Add-on-`version:` entspricht der Earnie-App-Version. Manueller Sync: `sync-to-ha-addon-repo.sh` im Hauptrepo.
+**Auto-publish:** Offizielle Earnie-Release-Tags (`vX.Y.Z`, ohne alpha/rc) triggern in Earnie den Job `publish_ha_addon`, der `packaging/homeassistant-addon/earnie/` hierher spiegelt. Vorabversionen (alpha/rc) erscheinen auf GHCR, aktualisieren dieses Repository aber **nicht** (Stopgap H12 / Earnie **2.6.j**). Add-on-`version:` entspricht der Earnie-App-Version. Manueller Sync: `sync-to-ha-addon-repo.sh` im Hauptrepo (nur offizielle Versionen).
 
 ## Installation
 
