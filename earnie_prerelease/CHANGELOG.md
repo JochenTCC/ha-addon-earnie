@@ -2,6 +2,11 @@
 
 Same image family as `earnie/`. Pre-releases and official releases both bump this tree (`version:` = newest including alpha/rc on pre-release tags; matches stable on official tags).
 
+## 2.6.0-alpha.3
+
+- Community **pre-release** of the **2.6** line (follows `2.6.0-alpha.2`). Closes the remaining **2.6** feature letters (**2.6.e** / **2.6.m** / **2.6.n**) plus H0/H11 closure. Pin this tag — **no** `:latest`.
+- Earnie release: [2.6.0-alpha.3](https://github.com/JochenTCC/Earnie/releases/tag/v2.6.0-alpha.3)
+
 ## 2.6.0-alpha.2
 
 - Community **pre-release** of the **2.6** line (follows `2.6.0-alpha.1`). Includes installation-hardening Sprint 1–3 code on `main` (**2.6.j** / **2.6.k** / **2.6.l**). Pin this tag — **no** `:latest`.
@@ -14,7 +19,9 @@ Same image family as `earnie/`. Pre-releases and official releases both bump thi
 
 ## Unreleased
 
-- **x86-64-v2 preflight:** image entrypoint (`docker/entrypoint.sh` → `docker/cpu_check.sh`; `run.sh` only sets the add-on docs link) checks `/proc/cpuinfo` on `x86_64` (cx16, lahf_lm, popcnt, pni, sse4_1, sse4_2, ssse3) and exits with an actionable German message (Proxmox CPU type `host`) instead of a NumPy `RuntimeError` / pyarrow SIGILL traceback loop.
+- **Start-Preflight (H1):** `docker/preflight.sh` (CPU x86-64-v2, beschreibbare Config/Runtime, Uhr vs. Build-Datum; Warnung bei wenig RAM/Speicher).
+- **HEALTHCHECK (H4):** Image-`HEALTHCHECK` (`/_stcore/health` + Daemon-Heartbeat in `runtime/daemon_heartbeat.json`). Kein `config.yaml` `watchdog:` (addon-linter: obsolete).
+- **x86-64-v2 preflight (H0):** image entrypoint (`docker/entrypoint.sh` → `docker/preflight.sh`; `run.sh` only sets the add-on docs link) checks `/proc/cpuinfo` on `x86_64` and exits with an actionable German message (Proxmox CPU type `host`) instead of a NumPy `RuntimeError` / pyarrow SIGILL traceback loop.
 - **`startup: application`:** start after Home Assistant Core; daemon waits for Supervisor Core API (`wait_for_supervisor_core`) before auto-starting `main` (H7).
 - **H12 stopgap:** pre-release tags no longer bump public `ha-addon-earnie` / `earnie` (official tags only).
 - **`ehal_loxone_http_port`:** `run.sh` exports `EARNIE_EHAL_LOXONE_HTTP_PORT` (runtime env precedence over `config.json`, same pattern as Streamlit port).
