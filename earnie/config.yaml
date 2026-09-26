@@ -2,7 +2,7 @@
 # Entwicklungsquelle im Hauptrepo; Sync nach ha-addon-earnie bei Releases
 # (siehe docs/einrichtung/homeassistant-addon.md und der Entwicklungsplan-Doku).
 name: Earnie
-version: "2.6.0-alpha.1"
+version: "2.5.3"
 slug: earnie
 description: "Energiemanagement und Optimierung für Smart Homes. Nach dem Start ca. 20–40 s warten, bis die Web-UI (Ingress) bereit ist."
 url: https://github.com/JochenTCC/Earnie
@@ -26,6 +26,9 @@ hassio_api: true
 # baseUrlPath re-attached (HA strips the Ingress path before the add-on).
 ingress: true
 ingress_port: 8501
+
+# Health: native Docker HEALTHCHECK in the image (addon-linter rejects obsolete
+# config.yaml watchdog:). Streamlit on :8502; see docker/healthcheck.sh.
 
 # Optional direct LAN ports (advanced). Same :8501 as Ingress (nginx).
 # Container ports stay fixed; streamlit_port option is informational for the
