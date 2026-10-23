@@ -2,8 +2,10 @@
 # Same prebuilt image family as earnie/; only version:/name/slug differ.
 # Entwicklungsquelle im Hauptrepo; Sync nach ha-addon-earnie bei Releases.
 name: "Earnie (Vorabversion)"
-version: "2.6.2"
+version: "2.7.0-alpha.9"
 slug: earnie_prerelease
+# Supervisor shows the "Experimental" label for this stage
+stage: experimental
 description: "Vorabversion von Earnie (Alpha/RC). Nicht für den Dauerbetrieb. Nach dem Start ca. 20–40 s warten, bis die Web-UI (Ingress) bereit ist. Nie parallel zum stabilen Earnie-Add-on starten."
 url: https://github.com/JochenTCC/Earnie
 # Same prebuilt images as stable earnie (H6); Supervisor pulls by version:.
@@ -29,7 +31,7 @@ ports:
   8541/tcp: 8541
 ports_description:
   8501/tcp: "Earnie Web-UI (optional direct; prefer Ingress)"
-  8541/tcp: "EHAL Loxone-HTTP (optional, nur bei Loxone-Backend)"
+  8541/tcp: "EHAL Daemon-HTTP (Push-Verfahren für das HA-YAML-Paket)"
 
 map:
   - type: addon_config
@@ -37,14 +39,20 @@ map:
 
 options:
   streamlit_port: 8501
-  ehal_loxone_http_port: 8541
+  ehal_http_port: 8541
   ui_modes: "sunset2sunset,scenario_explorer,live_environment"
   auto_start_main: true
   timezone: "Europe/Vienna"
+  # Optional: omit or leave unset for no change to Earnie consent state.
+  # usage_ping: true
 
 schema:
   streamlit_port: "port?"
+  ehal_http_port: "port?"
+  # Legacy name of ehal_http_port; kept in the schema so Supervisor does not drop
+  # a value saved before the rename (runtime_store/addon_options.py carries it over).
   ehal_loxone_http_port: "port?"
   ui_modes: "str?"
   auto_start_main: "bool?"
   timezone: "str?"
+  usage_ping: "bool?"
